@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 #define ll long long
@@ -15,23 +15,33 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int in = 0; in < n; in++)
+    ll n, k;
+    cin >> n >> k;
+    if (n&1)
     {
-        cin >> arr[in];
+        if (2*k <= n + 1)
+        {
+            cout << 2*k - 1;
+        }
+        else
+        {
+            k -= (n+1)/2;
+            cout << 2*k;
+        }
     }
-    int first = arr[0], last = arr[n-1];
-    int q, w;
-    cout << abs(first - arr[1]) << " " << abs(first - last) << "\n";
-    for (int in = 1; in < n-1; in++)
+    else
     {
-        int mex = max(last - arr[in], arr[in] - first);
-        int men = min(arr[in] - arr[in - 1], arr[in+1] - arr[in]);
-        cout << men << " " << mex << "\n";
+        if (2*k <= n)
+        {
+            cout << 2*k - 1;
+        }
+        else
+        {
+            k -= n/2;
+            cout << 2*k;
+        }
     }
-    cout << abs(arr[n-2] - last) << " " << abs(last - first) << "\n";
+    cout << "\n";
 }
 
 
@@ -41,7 +51,7 @@ int main()
     i_am_speed();
 
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     for(int it = 0; it < t; it++)
     {
         #ifndef ONLINE_JUDGE

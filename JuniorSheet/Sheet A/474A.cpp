@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 #define ll long long
@@ -15,23 +15,19 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int in = 0; in < n; in++)
+    char a;
+    string s;
+    cin >> a;
+    cin >> s;
+    int temp;
+    string hehe = "qwertyuiopasdfghjkl;zxcvbnm,./";
+    for (char ch: s)
     {
-        cin >> arr[in];
+        temp = hehe.find(ch);
+        if (a == 'R')cout << hehe[temp - 1];
+        else cout << hehe[temp + 1];
     }
-    int first = arr[0], last = arr[n-1];
-    int q, w;
-    cout << abs(first - arr[1]) << " " << abs(first - last) << "\n";
-    for (int in = 1; in < n-1; in++)
-    {
-        int mex = max(last - arr[in], arr[in] - first);
-        int men = min(arr[in] - arr[in - 1], arr[in+1] - arr[in]);
-        cout << men << " " << mex << "\n";
-    }
-    cout << abs(arr[n-2] - last) << " " << abs(last - first) << "\n";
+    cout << "\n";
 }
 
 
@@ -41,7 +37,7 @@ int main()
     i_am_speed();
 
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     for(int it = 0; it < t; it++)
     {
         #ifndef ONLINE_JUDGE

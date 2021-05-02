@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
 #define ll long long
@@ -15,23 +16,25 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int in = 0; in < n; in++)
+    int n; string s;
+    cin >> n >> s;
+    int arr[26] = {0};
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    for (char ch : s)
     {
-        cin >> arr[in];
+        arr[ch - 'a'] = 1;
     }
-    int first = arr[0], last = arr[n-1];
-    int q, w;
-    cout << abs(first - arr[1]) << " " << abs(first - last) << "\n";
-    for (int in = 1; in < n-1; in++)
+    bool res = true;
+    for (int i = 0; i < 26; i++)
     {
-        int mex = max(last - arr[in], arr[in] - first);
-        int men = min(arr[in] - arr[in - 1], arr[in+1] - arr[in]);
-        cout << men << " " << mex << "\n";
+        if (arr[i] == 0)
+        {
+            res = false;
+            break;
+        }
     }
-    cout << abs(arr[n-2] - last) << " " << abs(last - first) << "\n";
+    cout << (res ? "YES" : "NO");
+    cout << "\n";
 }
 
 

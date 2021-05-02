@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 #define ll long long
@@ -17,21 +17,21 @@ void solve()
 {
     int n;
     cin >> n;
-    int arr[n];
-    for (int in = 0; in < n; in++)
+    int vis[n] = {0}, temp;
+    int j = n-1;
+    for(int in = 0; in < n; in++)
     {
-        cin >> arr[in];
+        cin >> temp;
+        vis[temp - 1] = 1;
+        while (vis[j] == 1 && j >= 0)
+        {
+            cout << j+1 << " ";
+            j--;
+        }
+        cout << endl;
     }
-    int first = arr[0], last = arr[n-1];
-    int q, w;
-    cout << abs(first - arr[1]) << " " << abs(first - last) << "\n";
-    for (int in = 1; in < n-1; in++)
-    {
-        int mex = max(last - arr[in], arr[in] - first);
-        int men = min(arr[in] - arr[in - 1], arr[in+1] - arr[in]);
-        cout << men << " " << mex << "\n";
-    }
-    cout << abs(arr[n-2] - last) << " " << abs(last - first) << "\n";
+
+    cout << "\n";
 }
 
 
@@ -41,7 +41,7 @@ int main()
     i_am_speed();
 
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     for(int it = 0; it < t; it++)
     {
         #ifndef ONLINE_JUDGE

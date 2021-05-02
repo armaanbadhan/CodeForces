@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
 #define ll long long
@@ -17,21 +18,22 @@ void solve()
 {
     int n;
     cin >> n;
-    int arr[n];
+    int arr[n], sum = 0, temp;
     for (int in = 0; in < n; in++)
     {
-        cin >> arr[in];
+        cin >> temp;
+        sum += temp;
+        arr[in] = temp;
     }
-    int first = arr[0], last = arr[n-1];
-    int q, w;
-    cout << abs(first - arr[1]) << " " << abs(first - last) << "\n";
-    for (int in = 1; in < n-1; in++)
+    sort(arr, arr + n);
+    int i = 0, my = 0;
+    while (my + my <= sum)
     {
-        int mex = max(last - arr[in], arr[in] - first);
-        int men = min(arr[in] - arr[in - 1], arr[in+1] - arr[in]);
-        cout << men << " " << mex << "\n";
+        my += arr[n - 1 - i];
+        i++;
     }
-    cout << abs(arr[n-2] - last) << " " << abs(last - first) << "\n";
+    cout << i;
+    cout << "\n";
 }
 
 
