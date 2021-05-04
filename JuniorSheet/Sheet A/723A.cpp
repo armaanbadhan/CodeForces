@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define ll long long
@@ -15,22 +15,16 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    // as the numbers are from 1 to n and are distinct
-    // slont will always exist if a != b;
-    int a, b;
-    int n;
-    cin >> n;
-    bool res = false;
-    for (int in = 0; in < n; in++)
+    int a, b, c;
+    cin >> a >> b >> c;
+    int res = (a+b+c);
+    // read the ez questions lol;
+    //aaaaaaaaaaaaaaaaaaaaaaa
+    for(int i = 0; i < 101; i++)
     {
-        cin >> a >> b;
-        if (a != b)
-        {
-            res = true;
-            break;
-        }
+        res = min(res, abs(i - a) + abs(i - b) + abs(i - c));
     }
-    cout << ((res ? "Happy Alex" : "Poor Alex"));
+    cout << res;
     cout << "\n";
 }
 

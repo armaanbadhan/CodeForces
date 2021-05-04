@@ -15,22 +15,18 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    // as the numbers are from 1 to n and are distinct
-    // slont will always exist if a != b;
-    int a, b;
-    int n;
+    int n, temp;
     cin >> n;
-    bool res = false;
+    int chest = 0, bicep = 0, back = 0;
     for (int in = 0; in < n; in++)
     {
-        cin >> a >> b;
-        if (a != b)
-        {
-            res = true;
-            break;
-        }
+        cin >> temp;
+        if(in%3 == 0)chest += temp;
+        else if(in%3 == 1)bicep += temp;
+        else back += temp;
     }
-    cout << ((res ? "Happy Alex" : "Poor Alex"));
+    cout << ((chest > bicep && chest > back) ? "chest" : (back > bicep) ? "back" : "biceps");
+    // nub
     cout << "\n";
 }
 

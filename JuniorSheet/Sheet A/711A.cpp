@@ -15,22 +15,36 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    // as the numbers are from 1 to n and are distinct
-    // slont will always exist if a != b;
-    int a, b;
     int n;
     cin >> n;
-    bool res = false;
-    for (int in = 0; in < n; in++)
+    string arr[n];
+    bool found = false;
+    for(int in = 0; in < n; in++)
     {
-        cin >> a >> b;
-        if (a != b)
+        cin >> arr[in];
+        if(arr[in].substr(0, 2) == "OO" && found == false)
         {
-            res = true;
-            break;
+            found = true;
+            arr[in][0] = '+';
+            arr[in][1] = '+';
+        }
+        if (arr[in].substr(3, 2) == "OO" && found == false)
+        {
+            found = true;
+            arr[in][3] = '+';
+            arr[in][4] = '+';
         }
     }
-    cout << ((res ? "Happy Alex" : "Poor Alex"));
+    if(found == false)
+    {
+        cout << "NO";
+        return;
+    }
+    cout << "YES\n"; //nub
+    for(int in = 0; in < n; in++)
+    {
+        cout << arr[in] << "\n";
+    }
     cout << "\n";
 }
 

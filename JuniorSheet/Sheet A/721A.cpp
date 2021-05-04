@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #define ll long long
@@ -15,22 +16,30 @@ ASCII VALUES 'A' -> 65, 'Z' -> 90, 'a' -> 96, 'z' -> 122, '0' -> 48;
 
 void solve()
 {
-    // as the numbers are from 1 to n and are distinct
-    // slont will always exist if a != b;
-    int a, b;
     int n;
     cin >> n;
-    bool res = false;
-    for (int in = 0; in < n; in++)
+    string s;
+    cin >> s;
+    s = "W" + s + "W";
+    vector<int> vec;
+    int res = 0;
+    for(int in = 0; in < n + 2; in++)
     {
-        cin >> a >> b;
-        if (a != b)
+        if(s[in] == 'W')
         {
-            res = true;
-            break;
+            if(res != 0)vec.push_back(res);
+            res = 0;
+        }
+        else
+        {
+            res++;
         }
     }
-    cout << ((res ? "Happy Alex" : "Poor Alex"));
+    cout << vec.size() << endl;
+    for(int i = 0; i < vec.size(); i++)
+    {
+        cout << vec[i] << " ";
+    }
     cout << "\n";
 }
 
