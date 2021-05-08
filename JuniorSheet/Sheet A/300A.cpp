@@ -1,4 +1,5 @@
 #include <iostream>
+#include<vector>
 using namespace std;
 
 #define MOD 1000000007
@@ -20,48 +21,40 @@ void solve()
 {
     int n;
     cin >> n;
-    char ch;
-    int arr[n][n];
-    int vis[n][n] = {0};
-    for (int in = 0; in < n; in++)
-    {
-        for (int jn = 0; jn < n; jn++)
-        {
-            cin >> ch;
-            if (ch == 'o')
-            {
-                arr[in][jn] = 1;
-            }
-            else
-            {
-                arr[in][jn] = 0;
-            }
-        }
-    }
-    
-    bool res = true;
+    vector<int> pos;
+    vector<int> neg;
+    int zero = 0;
     int temp;
-
     for (int in = 0; in < n; in++)
     {
-        for (int jn = 0; jn < n; jn++)
-        {
-            temp = 0;
-            if(in > 0)  temp += arr[in - 1][jn];
-            if(in < n-1)temp += arr[in + 1][jn];
-            if(jn > 0)  temp += arr[in][jn - 1];
-            if(jn < n-1)temp += arr[in][jn + 1];
-
-            if(temp&1)
-            {
-                res = false;
-                break;
-            }
-        }
+        cin >> temp;
+        if (temp > 0)pos.push_back(temp);
+        if (temp < 0)neg.push_back(temp);
+        if (temp == 0) zero++;
     }
+    cout << "1 " << neg[neg.size() - 1];
+    n--;
+    cout << endl;
+    neg.pop_back();
 
-    cout << (res ? "YES" : "NO");    
-    cout << "\n";
+    if(pos.size() > 0)
+    {
+        cout << "1 " << pos[0];
+        n--;
+        pos.erase(pos.begin());
+    }
+    else
+    {
+        cout << "2 " << neg[0] << " " << neg[1];
+        neg.erase(neg.begin() + 0, neg.begin() + 2);
+        n--;
+        n--;
+    }
+    cout << endl;
+    cout << n << " ";
+    while(zero--)cout << "0 ";
+    for(int i = 0; i < pos.size(); i++)cout << pos[i] << " ";
+    for(int i = 0; i < neg.size(); i++)cout << neg[i] << " ";
 }
 
 

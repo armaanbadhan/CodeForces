@@ -1,4 +1,6 @@
 #include <iostream>
+#include<vector>
+#include <utility>
 using namespace std;
 
 #define MOD 1000000007
@@ -20,50 +22,20 @@ void solve()
 {
     int n;
     cin >> n;
-    char ch;
-    int arr[n][n];
-    int vis[n][n] = {0};
+    vector <pair<int, int>> vec;
+    int xi, ai;
     for (int in = 0; in < n; in++)
     {
-        for (int jn = 0; jn < n; jn++)
-        {
-            cin >> ch;
-            if (ch == 'o')
-            {
-                arr[in][jn] = 1;
-            }
-            else
-            {
-                arr[in][jn] = 0;
-            }
-        }
+        cin >> xi >> ai;
+        ///////////////?
+    }
+    for(int in = 0; in < n; in++)
+    {
+        cout << vec[in] << " ";
     }
     
-    bool res = true;
-    int temp;
-
-    for (int in = 0; in < n; in++)
-    {
-        for (int jn = 0; jn < n; jn++)
-        {
-            temp = 0;
-            if(in > 0)  temp += arr[in - 1][jn];
-            if(in < n-1)temp += arr[in + 1][jn];
-            if(jn > 0)  temp += arr[in][jn - 1];
-            if(jn < n-1)temp += arr[in][jn + 1];
-
-            if(temp&1)
-            {
-                res = false;
-                break;
-            }
-        }
-    }
-
-    cout << (res ? "YES" : "NO");    
-    cout << "\n";
 }
-
+// sort them first?
 
 int main()
 {

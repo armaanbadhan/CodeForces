@@ -18,49 +18,26 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    char ch;
-    int arr[n][n];
-    int vis[n][n] = {0};
-    for (int in = 0; in < n; in++)
+    int m;
+    cin >> m;
+    int arr[m + 1] = {0}, temp;
+    for (int im = 1; im <= m; im++)
     {
-        for (int jn = 0; jn < n; jn++)
+        cin >> temp;
+        arr[im] = arr[im-1] + temp;
+    }
+    int x, y;
+    cin >> x >> y;
+
+    for (int im = 1; im < m; im++)
+    {
+        if ((arr[m] - arr[im] >= x) && (arr[im] >= x) && (arr[m] - arr[im] <= y) && (arr[im] <= y))
         {
-            cin >> ch;
-            if (ch == 'o')
-            {
-                arr[in][jn] = 1;
-            }
-            else
-            {
-                arr[in][jn] = 0;
-            }
+            cout << im + 1;
+            return;
         }
     }
-    
-    bool res = true;
-    int temp;
-
-    for (int in = 0; in < n; in++)
-    {
-        for (int jn = 0; jn < n; jn++)
-        {
-            temp = 0;
-            if(in > 0)  temp += arr[in - 1][jn];
-            if(in < n-1)temp += arr[in + 1][jn];
-            if(jn > 0)  temp += arr[in][jn - 1];
-            if(jn < n-1)temp += arr[in][jn + 1];
-
-            if(temp&1)
-            {
-                res = false;
-                break;
-            }
-        }
-    }
-
-    cout << (res ? "YES" : "NO");    
+    cout << 0;
     cout << "\n";
 }
 

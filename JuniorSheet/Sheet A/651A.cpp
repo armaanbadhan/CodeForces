@@ -18,49 +18,30 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    char ch;
-    int arr[n][n];
-    int vis[n][n] = {0};
-    for (int in = 0; in < n; in++)
+    int x, y;
+    cin >> x >> y;
+    int res = 0;
+    if(x == 1 && y == 1)
     {
-        for (int jn = 0; jn < n; jn++)
-        {
-            cin >> ch;
-            if (ch == 'o')
-            {
-                arr[in][jn] = 1;
-            }
-            else
-            {
-                arr[in][jn] = 0;
-            }
-        }
+        cout << 0;
+        return;
     }
-    
-    bool res = true;
-    int temp;
-
-    for (int in = 0; in < n; in++)
+    while (true)
     {
-        for (int jn = 0; jn < n; jn++)
+        if(x > y)
         {
-            temp = 0;
-            if(in > 0)  temp += arr[in - 1][jn];
-            if(in < n-1)temp += arr[in + 1][jn];
-            if(jn > 0)  temp += arr[in][jn - 1];
-            if(jn < n-1)temp += arr[in][jn + 1];
-
-            if(temp&1)
-            {
-                res = false;
-                break;
-            }
+            y++;
+            x -= 2;
         }
+        else
+        {
+            x++;
+            y -= 2;
+        }
+        if (x <= 0 || y <= 0)break;
+        res++;
     }
-
-    cout << (res ? "YES" : "NO");    
+    cout << ++res;
     cout << "\n";
 }
 
