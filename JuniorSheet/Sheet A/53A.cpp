@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 #define MOD 1000000007
@@ -23,7 +25,27 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    
+    string str, temp;
+    cin >> str;
+    int n; cin >> n;
+    vector<string> with;
+    for (int in = 0; in < n; in++)
+    {
+        cin >> temp;
+        if (temp.substr(0, str.length()) == str)
+        {
+            with.push_back(temp);
+        }
+    }
+    if (with.size() > 0)
+    {
+        sort(with.begin(), with.end());
+        cout << with[0];
+    }
+    else
+    {
+        cout << str;
+    }
     cout << "\n";
 }
 

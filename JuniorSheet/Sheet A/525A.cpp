@@ -23,7 +23,31 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    
+    int n, res = 0;
+    cin >> n;
+    char inp;
+    int arr[26] = {0};
+    for (int in = 0; in < 2*n - 2; in++)
+    {
+        cin >> inp;
+
+        if (in&1)
+        {
+            if (arr[inp - 'A'] == 0)
+            {
+                res++;
+            }
+            else
+            {
+                arr[inp - 'A']--;
+            }
+        }
+        else
+        {
+            arr[inp - 'a']++;
+        }
+    }
+    cout << res;
     cout << "\n";
 }
 
