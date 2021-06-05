@@ -1,5 +1,4 @@
-#include <iostream>
-#include <cmath>
+#include<bits/stdc++.h> 
 using namespace std;
 
 #define MOD 1000000007
@@ -24,15 +23,32 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    int n, t, k, d;
-    cin >> n >> t >> k >> d;
-    int currt = 0;
-    while (currt <= d)
+    int n;
+    cin >> n;
+    int arr[n] = {0};
+    int p, q, x;
+    cin >> p;
+    for (int ip = 0; ip < p; ip++)
     {
-        n -= k;
-        currt += t;
+        cin >> x;
+        arr[x-1] = 1;
     }
-    cout << ((n > 0) ? "YES" : "NO");
+    cin >> q;
+    for (int iq = 0; iq < q; iq++)
+    {
+        cin >> x;
+        arr[x-1] = 1;
+    }
+    bool res = true;
+    for (int in = 0; in < n; in++)
+    {
+        if (arr[in] == 0)
+        {
+            res = false;
+            break;
+        }
+    }
+    cout << (res ? "I become the guy." : "Oh, my keyboard!");
     cout << "\n";
 }
 

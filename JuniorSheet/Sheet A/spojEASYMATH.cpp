@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 #define MOD 1000000007
@@ -19,20 +18,23 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 *///////////////////////////////////////////////////////////////////////////////
 
 /*
-
+https://www.spoj.com/problems/EASYMATH/
+a + b + c + d + e - ab - ac - ad - bc - bd - cd + abc + abd + acd + bcd - abcd
+inclusion exclusion
 */
+
+//global
+ll n, m, a, d;
+
+int calc(int x)
+{
+    return (m-n)/x;
+}
 
 void solve()
 {
-    int n, t, k, d;
-    cin >> n >> t >> k >> d;
-    int currt = 0;
-    while (currt <= d)
-    {
-        n -= k;
-        currt += t;
-    }
-    cout << ((n > 0) ? "YES" : "NO");
+    cin >> n >> m >> a >> d;
+    ll n1 = a, n2 = n1+d, n3 = n2+d, n4 = n3+d, n5 = n4+d;
     cout << "\n";
 }
 

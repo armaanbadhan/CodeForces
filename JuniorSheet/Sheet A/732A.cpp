@@ -18,10 +18,9 @@ void solve()
     int k, r;
     cin >> k >> r;
     int res = 1;
-    while (true)
+    for (; res <= 10; res++)
     {
         if ((res * k)%10 == r || (res*k)%10 == 0)break;
-        res++;
     }
     cout << res;
     cout << "\n";

@@ -1,11 +1,12 @@
 #include <iostream>
-#include <cmath>
+#include <vector>
 using namespace std;
 
 #define MOD 1000000007
 #define i_am_speed() ios_base::sync_with_stdio(false);\
                      cin.tie(NULL);\
                      cout.tie(NULL);
+#define debug(a) cout << a << endl
 #define debug2(a, b) cout << a << " " << b << endl;
 
 typedef long long ll;
@@ -24,15 +25,20 @@ INT_MAX -> 2,147,483,647 (10^10), LLONG_MAX -> 9,223,372,036,854,775,807 (10^19)
 
 void solve()
 {
-    int n, t, k, d;
-    cin >> n >> t >> k >> d;
-    int currt = 0;
-    while (currt <= d)
+    int n, m;
+    cin >> n >> m;
+    int arr[n];
+    char inp;
+    for (int in = 0; in < n; in++)
     {
-        n -= k;
-        currt += t;
+        cin >> inp;
+        if (inp == '1')arr[in] = 1;
+        else arr[in] = 0;
     }
-    cout << ((n > 0) ? "YES" : "NO");
+    vector<int> vec;
+    
+
+
     cout << "\n";
 }
 
@@ -43,7 +49,7 @@ int main()
     i_am_speed();
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for(int it = 0; it < t; it++)
     {
         #ifndef ONLINE_JUDGE
